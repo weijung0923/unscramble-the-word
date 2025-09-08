@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', 'Comic Sans', Arial, Helvetica, sans-serif;
     background: linear-gradient(135deg, #a8e6cf 0%, #ffd3a5 100%);
     min-height: 100vh;
     display: flex;
@@ -43,7 +43,7 @@ body {
     color: #4a4a4a;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', 'Comic Sans', Arial, Helvetica, sans-serif;
 }
 
 .rainbow-icon {
@@ -250,7 +250,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', 'Comic Sans', Arial, Helvetica, sans-serif;
 }
 
 .check-button:hover, .play-again-button:hover {
@@ -327,6 +327,11 @@ body {
         transform: scale(20);
         opacity: 0;
     }
+}
+
+/* Global Font Settings */
+* {
+    font-family: 'Comic Sans MS', 'Comic Sans', Arial, Helvetica, sans-serif;
 }
 
 /* Touch and Mobile Optimizations */
