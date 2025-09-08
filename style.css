@@ -1,0 +1,567 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #a8e6cf 0%, #ffd3a5 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background: white;
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #ffb3ba;
+}
+
+/* Game Title */
+.game-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.game-title h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a4a4a;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.rainbow-icon {
+    font-size: 32px;
+    animation: rainbowBounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes rainbowText {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes rainbowBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(-5deg);
+    }
+}
+
+/* Progress Bar */
+.progress-container {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6b46c1;
+    white-space: nowrap;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 16px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e0e0e0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff9a9e, #fecfef, #c7ceea);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.progress-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #6b46c1;
+    min-width: 40px;
+}
+
+/* Image Container */
+.image-container {
+    margin-bottom: 25px;
+}
+
+.image-placeholder {
+    font-size: 70px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #ffb3ba, #ffdfba);
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: gentleBounce 3s ease-in-out infinite;
+    border: 3px solid #ff9a9e;
+}
+
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-8px) scale(1.05);
+    }
+}
+
+/* Answer Boxes */
+.answer-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.answer-box {
+    width: 55px;
+    height: 55px;
+    border: 3px dashed #ffb3ba;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    background: #fff5f5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #4a4a4a;
+}
+
+.answer-box.filled {
+    background: linear-gradient(45deg, #ffb3ba, #ffdfba);
+    border: 3px solid #ff9a9e;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(255, 179, 186, 0.3);
+}
+
+.answer-box:hover {
+    transform: scale(1.08);
+    border-color: #ff9a9e;
+}
+
+/* Alphabet Container */
+.alphabet-container {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.alphabet-tile {
+    width: 45px;
+    height: 45px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.alphabet-tile:nth-child(1) { background: #ff6b6b; }
+.alphabet-tile:nth-child(2) { background: #4ecdc4; }
+.alphabet-tile:nth-child(3) { background: #45b7d1; }
+.alphabet-tile:nth-child(4) { background: #96ceb4; }
+
+.alphabet-tile:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.alphabet-tile:active {
+    transform: scale(0.95);
+}
+
+.alphabet-tile.used {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    background: #ccc !important;
+}
+
+.alphabet-tile.dragging {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.answer-box.drag-over {
+    background: linear-gradient(45deg, #ffb3ba, #ffdfba) !important;
+    border-color: #ff9a9e !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 179, 186, 0.4);
+}
+
+/* Buttons */
+.check-button, .play-again-button {
+    background: linear-gradient(45deg, #ff9a9e, #fecfef);
+    color: #4a4a4a;
+    border: 3px solid #ffb3ba;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.check-button:hover, .play-again-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #ffb3ba, #ffdfba);
+}
+
+.check-button:active, .play-again-button:active {
+    transform: scale(0.98);
+}
+
+/* Message Overlay */
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.message-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: messagePop 0.5s ease;
+}
+
+@keyframes messagePop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Fireworks */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    animation: firework 1s ease-out forwards;
+}
+
+@keyframes firework {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
+
+/* Touch and Mobile Optimizations */
+.alphabet-tile {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.answer-box {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+/* Touch feedback for mobile */
+@media (max-width: 1024px) {
+    .alphabet-tile:active {
+        transform: scale(0.9);
+        transition: transform 0.1s ease;
+    }
+    
+    .answer-box:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* Mobile Design (phones) */
+@media (max-width: 600px) {
+    .game-container {
+        padding: 15px;
+        margin: 5px;
+        max-width: 100%;
+    }
+    
+    .game-title h1 {
+        font-size: 22px;
+    }
+    
+    .rainbow-icon {
+        font-size: 28px;
+    }
+    
+    .progress-label {
+        font-size: 12px;
+    }
+    
+    .progress-text {
+        font-size: 14px;
+    }
+    
+    .answer-box {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        min-height: 44px;
+    }
+    
+    .alphabet-tile {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+        min-height: 44px;
+    }
+    
+    .image-placeholder {
+        font-size: 50px;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .check-button, .play-again-button {
+        min-height: 44px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .answer-container {
+        gap: 6px;
+    }
+    
+    .alphabet-container {
+        gap: 4px;
+    }
+}
+
+/* Tablet Design (7-10 inches) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .game-container {
+        padding: 40px;
+        margin: 20px;
+        max-width: 700px;
+    }
+    
+    .game-title h1 {
+        font-size: 36px;
+    }
+    
+    .rainbow-icon {
+        font-size: 42px;
+    }
+    
+    .progress-label {
+        font-size: 16px;
+    }
+    
+    .progress-text {
+        font-size: 18px;
+    }
+    
+    .progress-bar {
+        height: 20px;
+    }
+    
+    .answer-box {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+    }
+    
+    .alphabet-tile {
+        width: 65px;
+        height: 65px;
+        font-size: 24px;
+    }
+    
+    .image-placeholder {
+        font-size: 90px;
+        width: 140px;
+        height: 140px;
+    }
+    
+    .check-button, .play-again-button {
+        padding: 18px 40px;
+        font-size: 20px;
+        min-height: 50px;
+    }
+    
+    .answer-container {
+        gap: 12px;
+        margin-bottom: 35px;
+    }
+    
+    .alphabet-container {
+        gap: 10px;
+        margin-bottom: 35px;
+    }
+    
+    .image-container {
+        margin-bottom: 35px;
+    }
+    
+    .progress-container {
+        margin-bottom: 35px;
+    }
+}
+
+/* Large Tablet/Desktop Design */
+@media (min-width: 1025px) {
+    .game-container {
+        padding: 50px;
+        margin: 30px;
+        max-width: 800px;
+    }
+    
+    .game-title h1 {
+        font-size: 40px;
+    }
+    
+    .rainbow-icon {
+        font-size: 48px;
+    }
+    
+    .progress-label {
+        font-size: 18px;
+    }
+    
+    .progress-text {
+        font-size: 20px;
+    }
+    
+    .progress-bar {
+        height: 24px;
+    }
+    
+    .answer-box {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+    }
+    
+    .alphabet-tile {
+        width: 75px;
+        height: 75px;
+        font-size: 28px;
+    }
+    
+    .image-placeholder {
+        font-size: 100px;
+        width: 160px;
+        height: 160px;
+    }
+    
+    .check-button, .play-again-button {
+        padding: 20px 50px;
+        font-size: 22px;
+        min-height: 60px;
+    }
+    
+    .answer-container {
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .alphabet-container {
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+    
+    .image-container {
+        margin-bottom: 40px;
+    }
+    
+    .progress-container {
+        margin-bottom: 40px;
+    }
+}
